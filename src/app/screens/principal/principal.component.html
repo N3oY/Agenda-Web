@@ -1,0 +1,81 @@
+<section class="registro-user">
+  <div class="header-registro">
+                  <mat-icon class="icon-back" (click)="regresar()">arrow_back</mat-icon>
+                  <span *ngIf="!editar" class="title">Registrar Cita</span>
+                  <span *ngIf="editar" class="title">Actualizar usuario</span>
+                  <mat-icon class="icon-forward">arrow_forward</mat-icon>
+              </div>
+      <div class="wrapper">
+          <div class="menu">
+              <a class="agenda" href="Registro-agenda"><img class="img" src="/assets/image/agenda.jpg" width="25px" height="25px"> Agendar Cita</a>
+          </div>
+          <!--Va a englobar todo el formulario con la cabecera-->
+          <div class="section-registro">
+              <!--Va a mostrar el titulo en la cabecera del componente-->
+              
+              <div class="body-registro">
+                  <mat-form-field class="mat-input" appearance="outline">
+                      <mat-label>Nombre o descripcion de la cita</mat-label>
+                      <input matInput [(ngModel)]="actividad.tarea" name="id" placeholder="Escribe nombre de la cita">
+                  </mat-form-field>
+                  <div *ngIf="errors.tarea" class="invalid-feedback">{{ errors.tarea }}</div>
+  
+                  <mat-form-field class="mat-input" appearance="outline">
+                      <mat-label>Nombre del paciente</mat-label>
+                      <input matInput [(ngModel)]="actividad.first_name" name="name" placeholder="Escribe nombre del paciente">
+                  </mat-form-field>
+                  <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
+  
+                  <mat-form-field class="mat-input" appearance="outline">
+                      <mat-label>Apellidos del paciente</mat-label>
+                      <input matInput [(ngModel)]="actividad.last_name" placeholder="Escribe tus apellidos del paciente">
+                  </mat-form-field>
+                  <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+  
+                  <mat-form-field class="mat-input" appearance="outline">
+                      <mat-label>Correo Electronico del Paciente</mat-label>
+                      <input matInput [(ngModel)]="actividad.email" placeholder="Escribe tu correo electronico del paciente">
+                  </mat-form-field>
+                  <div *ngIf="errors.email" class="invalid-feedback">{{ errors.email }}</div>
+  
+                  <mat-form-field class="mat-input" appearance="outline">  
+                      <mat-label>Fecha de la cita</mat-label>  
+                      <input matInput [matDatepicker]="picker" [(ngModel)]="actividad.fecha_cita" (focus)="picker.open()" placeholder="Agregar fecha" (dateChange)="changeFecha($event)" type="string">  
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
+                      <mat-datepicker #picker>
+                  </mat-datepicker></mat-form-field>
+                  <div *ngIf="errors.fecha_cita" class="invalid-feedback">{{ errors.fecha_cita }}</div>
+  
+                  <mat-form-field class="mat-input" appearance="outline">
+                      <mat-label>Edad del paciente</mat-label>
+                      <input matInput [(ngModel)]="actividad.edad" mask='00' placeholder="Escribe tu edad">
+                  </mat-form-field>
+                  <div *ngIf="errors.edad" class="invalid-feedback">{{ errors.edad }}</div>
+  
+                  <mat-form-field class="mat-input" appearance="outline">
+                      <mat-label>Telefono del paciente</mat-label>
+                      <input matInput [(ngModel)]="actividad.telefono" mask='(000) 000-0000' placeholder="Escribe tu numero de telefono">
+                  </mat-form-field>
+                  <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
+  
+                  <div class="section-buttons">
+                      <button class="btn btn-danger"  (click)="regresar()">Cancelar</button>
+                      <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registraragenda()">Agendar</button>
+                      <!--<button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button> -->
+                  </div>
+              </div>
+          </div>
+          <div class="menu2">
+              <div class="cuadro">
+                  <h1>Fecha:</h1>
+                  <h1>Hora:</h1>
+                  <h1>Lista de agendados</h1>
+              </div>
+              <div class="lista">
+                  <li>Aqui va la lista</li>
+              </div>
+              <p>Juan Jesús Garcia Tino</p>
+          </div>
+  
+      </div>
+  </section>
